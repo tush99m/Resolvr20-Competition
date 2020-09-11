@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolvr Case Study Competition</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2 class='container-heading'><span class='heading_first'>Resolvr Case Study Competition </span></h2>
+        <div class='description'>
+                <p> Team: Invaeph </p>
+                <p> Tushar Rathod </p>
+                <p> Prerit Gupta </p>
+                <p> Sagar Choudhari </p>
+                <p> Badrikedar Rath </p>
+                <p> SCMHRD, Pune </p>
+            </div>
+    </div>
+
+    <br>
+    <div style="color:blue">
+        <form action="{{ url_for('predict')}}" method="post">
+
+            <h3>What Is your Gender?</h3><select name="gender" id="gender" required="required">
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+            </select>
+
+            <h3>What is the age of customer?(In Years)</h3><input id="age" name="Age" required="required">
+
+            <h3>What Is the Customer Type?</h3><select name="cust_type" id="cust_type" required="required">
+                <option value="Loyal Customer">Loyal Customer</option>
+                <option value="disloyal Customer">disloyal Customer</option>
+            </select>
+
+            <h3>What is the Type of Travel?</h3><select name="type_of_travel" id="type_of_travel" required="required">
+                <option value="Personal Travel">Personal Travel</option>
+                <option value="Business travel">Business travel</option>
+            </select>
+
+            <h3>Which class the customer is travelling in?</h3><select name="Class" id="class" required="required">
+                <option value="Business">Business</option>
+                <option value="Eco">Eco</option>
+                <option value="Eco Plus">Eco Plus</option>
+            </select>
+
+            <h3>What is the Flight Distance?(In kms)</h3><input id="f_dist" name="f_dist" required="required">
+
+            <h3>What is the departure delay in Minutes?</h3><input id="d_delay" name="Dep_Delay" required="required">
+
+            <h3>What is the arrival delay in Minutes?</h3><input id="a_delay" name="Arr_Delay" required="required">
+
+            <br><br>
+            <h3>Rate the experice with respect to below categories from 1 to 5; 1 being Strongly Dissatisifed and 5 for Strongly Satisified. 0 if Not Applicable </h3>
+            <h3>Inflight wifi service</h3>
+                <ul class='likert'>
+                      <li>
+                        <input type="radio" name="wifi" value="vds">
+                        <label>Very Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="wifi" value="ds">
+                        <label>Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="wifi" value="neutral">
+                        <label>Neutral</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="wifi" value="s">
+                        <label>Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="wifi" value="vs">
+                        <label>Very Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="wifi" value="na">
+                        <label>NA</label>
+                      </li>
+                    </ul>
+
+            <h3>Departure/Arrival time convenient</h3>
+                    <ul class='likert'>
+                      <li>
+                        <input type="radio" name="time_convenient" value="vds">
+                        <label>Very Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="time_convenient" value="ds">
+                        <label>Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="time_convenient" value="neutral">
+                        <label>Neutral</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="time_convenient" value="s">
+                        <label>Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="time_convenient" value="vs">
+                        <label>Very Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="time_convenient" value="na">
+                        <label>NA</label>
+                      </li>
+                    </ul>
+
+            <h3>Ease of Online booking</h3>
+                <ul class='likert'>
+                      <li>
+                        <input type="radio" name="online_booking" value="vds">
+                        <label>Very Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="online_booking" value="ds">
+                        <label>Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="online_booking" value="neutral">
+                        <label>Neutral</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="online_booking" value="s">
+                        <label>Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="online_booking" value="vs">
+                        <label>Very Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="online_booking" value="na">
+                        <label>NA</label>
+                      </li>
+                    </ul>
+
+            <h3>Gate location</h3>
+                <ul class='likert'>
+                      <li>
+                        <input type="radio" name="gate_loc" value="vds">
+                        <label>Very Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="gate_loc" value="ds">
+                        <label>Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="gate_loc" value="neutral">
+                        <label>Neutral</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="gate_loc" value="s">
+                        <label>Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="gate_loc" value="vs">
+                        <label>Very Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="gate_loc" value="na">
+                        <label>NA</label>
+                      </li>
+                    </ul>
+
+            <h3>Food and drink</h3>
+                <ul class='likert'>
+                      <li>
+                        <input type="radio" name="f_d" value="vds">
+                        <label>Very Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="f_d" value="ds">
+                        <label>Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="f_d" value="neutral">
+                        <label>Neutral</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="f_d" value="s">
+                        <label>Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="f_d" value="vs">
+                        <label>Very Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="f_d" value="na">
+                        <label>NA</label>
+                      </li>
+                    </ul>
+
+            <h3>Online boarding</h3>
+                <ul class='likert'>
+                      <li>
+                        <input type="radio" name="onl_boarding" value="vds">
+                        <label>Very Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="onl_boarding" value="ds">
+                        <label>Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="onl_boarding" value="neutral">
+                        <label>Neutral</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="onl_boarding" value="s">
+                        <label>Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="onl_boarding" value="vs">
+                        <label>Very Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="onl_boarding" value="na">
+                        <label>NA</label>
+                      </li>
+                    </ul>
+
+            <h3>Seat comfort</h3>
+                <ul class='likert'>
+                      <li>
+                        <input type="radio" name="seat" value="vds">
+                        <label>Very Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="seat" value="ds">
+                        <label>Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="seat" value="neutral">
+                        <label>Neutral</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="seat" value="s">
+                        <label>Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="seat" value="vs">
+                        <label>Very Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="seat" value="na">
+                        <label>NA</label>
+                      </li>
+                    </ul>
+
+            <h3>Inflight entertainment</h3>
+                <ul class='likert'>
+                      <li>
+                        <input type="radio" name="ent" value="vds">
+                        <label>Very Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="ent" value="ds">
+                        <label>Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="ent" value="neutral">
+                        <label>Neutral</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="ent" value="s">
+                        <label>Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="ent" value="vs">
+                        <label>Very Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="ent" value="na">
+                        <label>NA</label>
+                      </li>
+                    </ul>
+
+            <h3>On-board service</h3>
+                <ul class='likert'>
+                      <li>
+                        <input type="radio" name="on_board" value="vds">
+                        <label>Very Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="on_board" value="ds">
+                        <label>Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="on_board" value="neutral">
+                        <label>Neutral</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="on_board" value="s">
+                        <label>Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="on_board" value="vs">
+                        <label>Very Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="on_board" value="na">
+                        <label>NA</label>
+                      </li>
+                    </ul>
+
+            <h3>Leg room service</h3>
+                <ul class='likert'>
+                      <li>
+                        <input type="radio" name="leg_room" value="vds">
+                        <label>Very Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="leg_room" value="ds">
+                        <label>Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="leg_room" value="neutral">
+                        <label>Neutral</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="leg_room" value="s">
+                        <label>Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="leg_room" value="vs">
+                        <label>Very Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="leg_room" value="na">
+                        <label>NA</label>
+                      </li>
+                    </ul>
+
+            <h3>Baggage handling</h3>
+                <ul class='likert'>
+                      <li>
+                        <input type="radio" name="baggage" value="vds">
+                        <label>Very Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="baggage" value="ds">
+                        <label>Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="baggage" value="neutral">
+                        <label>Neutral</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="baggage" value="s">
+                        <label>Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="baggage" value="vs">
+                        <label>Very Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="baggage" value="na">
+                        <label>NA</label>
+                      </li>
+                    </ul>
+
+            <h3>Checking service</h3>
+                <ul class='likert'>
+                      <li>
+                        <input type="radio" name="checking" value="vds">
+                        <label>Very Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="checking" value="ds">
+                        <label>Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="checking" value="neutral">
+                        <label>Neutral</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="checking" value="s">
+                        <label>Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="checking" value="vs">
+                        <label>Very Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="checking" value="na">
+                        <label>NA</label>
+                      </li>
+                    </ul>
+
+            <h3>Inflight service</h3>
+                <ul class='likert'>
+                      <li>
+                        <input type="radio" name="inflight" value="vds">
+                        <label>Very Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="inflight" value="ds">
+                        <label>Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="inflight" value="neutral">
+                        <label>Neutral</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="inflight" value="s">
+                        <label>Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="inflight" value="vs">
+                        <label>Very Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="inflight" value="na">
+                        <label>NA</label>
+                      </li>
+                    </ul>
+
+            <h3>Cleanliness</h3>
+                <ul class='likert'>
+                      <li>
+                        <input type="radio" name="cleanliness" value="vds">
+                        <label>Very Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="cleanliness" value="ds">
+                        <label>Dissatisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="cleanliness" value="neutral">
+                        <label>Neutral</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="cleanliness" value="s">
+                        <label>Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="cleanliness" value="vs">
+                        <label>Very Satisfied</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="cleanliness" value="na">
+                        <label>NA</label>
+                      </li>
+                    </ul>
+
+
+            <br>
+            <h3>Check if a customer is satisfied or not?</h3>
+            <button id="sub" type="submit"> Classify </button>
+            <br>
+
+        </form>
+
+    </div>
+
+
+    <style>
+        body {
+            background-color: lightslategray;
+            text-align: center;
+            padding: 0px;
+        }
+        
+        #research {
+            font-size: 18px;
+            width: 100px;
+            height: 23px;
+            top: 23px;
+        }
+        
+        #box {
+            border-radius: 60px;
+            border-color: 45px;
+            border-style: solid;
+            font-family: cursive;
+            text-align: center;
+            background-color: rgb(168, 131, 61);
+            font-size: medium;
+            position: absolute;
+            width: 700px;
+            bottom: 9%;
+            height: 850px;
+            right: 30%;
+            padding: 0px;
+            margin: 0px;
+            font-size: 14px;
+        }
+        
+        #fuel {
+            width: 83px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 20px;
+        }
+        
+        #fuel:hover {
+            background-color: white;
+        }
+        
+        #research {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #research:hover {
+            background-color: white;
+        }
+        
+        #resea {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #resea:hover {
+            background-color: white;
+        }
+        
+        #sub {
+            width: 120px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #sub:hover {
+            background-color: darkcyan;
+        }
+        
+        #first {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #second {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #third {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #fourth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+#### Likert Scale
+        html,body {padding:0;margin:0;}
+.wrap {
+  font:12px Arial, san-serif;
+}
+h1.likert-header {
+  padding-left:4.25%;
+  margin:20px 0 0;
+}
+form .statement {
+  display:block;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 30px 0 0 4.25%;
+  margin-bottom:10px;
+}
+form .likert {
+  list-style:none;
+  width:100%;
+  margin:0;
+  padding:0 0 35px;
+  display:block;
+  border-bottom:2px solid #efefef;
+}
+form .likert:last-of-type {border-bottom:0;}
+form .likert:before {
+  content: '';
+  position:relative;
+  top:11px;
+  left:9.5%;
+  display:block;
+  background-color:#efefef;
+  height:4px;
+  width:78%;
+}
+form .likert li {
+  display:inline-block;
+  width:19%;
+  text-align:center;
+  vertical-align: top;
+}
+form .likert li input[type=radio] {
+  display:block;
+  position:relative;
+  top:0;
+  left:50%;
+  margin-left:-6px;
+  
+}
+form .likert li label {width:100%;}
+form .buttons {
+  margin:30px 0;
+  padding:0 4.25%;
+  text-align:right
+} 
+form .buttons button {
+  padding: 5px 10px;
+  background-color: #67ab49;
+  border: 0;
+  border-radius: 3px;
+}
+form .buttons .clear {background-color: #e9e9e9;}
+form .buttons .submit {background-color: #67ab49;} 
+form .buttons .clear:hover {background-color: #ccc;}
+form .buttons .submit:hover {background-color: #14892c;} 
+    </style>
+</body>
+
+</html>
