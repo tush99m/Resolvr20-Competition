@@ -52,9 +52,9 @@ def predict():
         else:
             Class = 2
 
-        f_dist = float(request.form['f_dist'])
-        d_delay = float(request.form['Dep_Delay'])
-        a_delay = float(request.form['Arr_Delay'])
+        f_dist = float(abs(request.form['f_dist']))
+        d_delay = float(abs(request.form['Dep_Delay']))
+        a_delay = float(abs(request.form['Arr_Delay']))
 
         wifi = get_number(request.form['wifi'])
         time_convenient = get_number(request.form['time_convenient'])
