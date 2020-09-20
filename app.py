@@ -76,7 +76,9 @@ def predict():
                         leg_room, baggage, checking, inflight, cleanliness, d_delay, a_delay, ]
         
         data = np.array([indep_var])
-        my_prediction = int(regressor.predict(data)[0])
+        prediction = int(regressor.predict(data)[0])
+
+        my_prediction = "Satisfied" if prediction == 1 else "Dissatisfied"
               
         return render_template('result.html', satisfaction_class = my_prediction)
 
